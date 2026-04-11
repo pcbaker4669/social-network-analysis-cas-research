@@ -1,16 +1,23 @@
-# This is a sample Python script.
+import os
+from dotenv import load_dotenv
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+load_dotenv()
+
+REDDIT_CONFIG = {
+    "client_id": os.getenv("REDDIT_CLIENT_ID"),
+    "client_secret": os.getenv("REDDIT_CLIENT_SECRET"),
+    "user_agent": os.getenv("REDDIT_USER_AGENT"),
+    "username": os.getenv("REDDIT_USERNAME"),
+    "password": os.getenv("REDDIT_PASSWORD"),
+}
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main():
+    print("Reddit config loaded.")
+    print(f"client_id present: {bool(REDDIT_CONFIG['client_id'])}")
+    print(f"client_secret present: {bool(REDDIT_CONFIG['client_secret'])}")
+    print(f"user_agent: {REDDIT_CONFIG['user_agent']}")
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    main()
